@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PostRequest;
 use App\Post;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
@@ -64,11 +64,11 @@ class PostController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param Request $request
+     * @param PostRequest $request
      * @return RedirectResponse
      */
 
-    public function store(Request $request): RedirectResponse
+    public function store(PostRequest $request): RedirectResponse
     {
         $post = new Post(); // создали объект класса Post
         $post->title = $request->title; // добавление заголовка в БД
@@ -120,12 +120,12 @@ class PostController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param Request $request
+     * @param PostRequest $request
      * @param int $id
      * @return RedirectResponse
      */
 
-    public function update(Request $request, int $id)
+    public function update(PostRequest $request, int $id)
     {
         $post = Post::find($id);
         $post->title = $request->title; // перезаписывается заголовок в БД

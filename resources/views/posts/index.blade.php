@@ -2,10 +2,22 @@
 
 @section('content')
     {{-- добавить нормальные окночания, сделать еще ифов  --}}
-
+    {{-- 1 пост; 2-4 поста; 5-20 постов--}}
     {{-- поиск  --}}
     @if(isset($_GET['search']))
-        @if(count ($posts)>0)
+        @if(count ($posts)===1)
+            <h2>Результаты поиска по запросу <?= $_GET['search'] ?></h2>
+            <p class="lead">Всего найден {{ count($posts) }} пост</p>
+        @elseif(count ($posts)===2)
+            <h2>Результаты поиска по запросу <?= $_GET['search'] ?></h2>
+            <p class="lead">Всего найдено {{ count($posts) }} поста</p>
+        @elseif(count ($posts)===3)
+            <h2>Результаты поиска по запросу <?= $_GET['search'] ?></h2>
+            <p class="lead">Всего найдено {{ count($posts) }} поста</p>
+        @elseif(count ($posts)===4)
+            <h2>Результаты поиска по запросу <?= $_GET['search'] ?></h2>
+            <p class="lead">Всего найдено {{ count($posts) }} поста</p>
+        @elseif(count ($posts)>4)
             <h2>Результаты поиска по запросу <?= $_GET['search'] ?></h2>
             <p class="lead">Всего найдено {{ count($posts) }} постов</p>
         @else

@@ -36,12 +36,23 @@
 
 {{-- .container>.row>.col-6>.card>.card-header+.card-body --}}
 <div class="container">
+
+    {{-- делаем "флешку" для вывода сообщения об ошибке --}}
+    @if($errors->any()) {{-- если есть какие-то ошибки --}}
+        @foreach($errors->all() as $error) {{-- мы проходимся по всем ошибкам циклом --}}
+        <div class="alert alert-danger alert-dismissible fade show mt-3" role="alert">
+            {{ $error }} {{-- и выводим ошибку --}}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        @endforeach
+    @endif
+
     {{-- делаем "флешку" - alert сообщение вверху экрана --}}
     @if(session('success'))
-    <div class="alert alert-success alert-dismissible fade show mt-3" role="alert">
-        {{ session('success') }}
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
+        <div class="alert alert-success alert-dismissible fade show mt-3" role="alert">
+            {{ session('success') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
     @endif
 
     @yield('content') {{-- означает, что в контейнере может быть динамический контент, а в наследуемых файлах вызываем section --}}
