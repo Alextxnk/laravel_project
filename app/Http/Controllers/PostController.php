@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Contact;
 use App\Http\Requests\PostRequest;
 use App\Post;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -15,6 +17,18 @@ use Illuminate\View\View;
 
 class PostController extends Controller
 {
+    public function posts()
+    {
+        $posts = Post::all();
+        return response()->json(
+            [
+                'posts' => $posts,
+                'message' => 'Posts',
+                'code' => 200
+            ]
+        );
+    }
+
     /**
      * Display a listing of the resource.
      *

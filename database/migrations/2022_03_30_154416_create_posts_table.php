@@ -18,11 +18,11 @@ class CreatePostsTable extends Migration
             $table->bigInteger('author_id')->unsigned(); // чтоб не было ошибки
             $table->string('title');
             $table->string('short_title');
-            $table->string('img')->nullable(); // поскольку вместо картинки может быть какое-то дефолтное значение, при создании новой записи нам не обязательно вставлять картинку
+            $table->string('img')->nullable(); // поскольку вместо картинки может быть какое-то дефолтное значение, при создании новой записи нам необязательно вставлять картинку
             $table->text('description');
             $table->timestamps();
 
-            $table->foreign('author_id')->references('id')->on('users'); // внешний ключ связан по id c таблицой users
+            $table->foreign('author_id')->references('id')->on('users'); // внешний ключ связан по id c таблицей users
         });
     }
 
